@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Record Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>🎓 Student Record Management</h1>
+
+    <div class="form">
+      <input type="text" id="name" placeholder="Enter Student Name">
+      <input type="number" id="age" placeholder="Enter Age">
+      <input type="text" id="grade" placeholder="Enter Grade">
+      <button id="addBtn">Add Student</button>
+      <button id="updateBtn" style="display:none;">Update Student</button>
+    </div>
+
+    <h2>Student List</h2>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Grade</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
