@@ -1,4 +1,4 @@
-/* --- Modern Glassmorphism Style --- */
+/* --- Modern Glassmorphism + Creative Animations --- */
 
 * {
   box-sizing: border-box;
@@ -14,34 +14,60 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   padding: 40px 10px;
+
+  /* background animation */
+  background-size: 200% 200%;
+  animation: bgMove 8s ease infinite;
 }
 
-/* Container Box */
+@keyframes bgMove {
+  0% { background-position: left top; }
+  50% { background-position: right bottom; }
+  100% { background-position: left top; }
+}
+
+/* Fade-in animation for main container */
 .container {
   width: 90%;
   max-width: 700px;
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
   padding: 25px 30px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.30);
   color: white;
+  animation: fadeSlide 0.8s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Title */
 h1 {
   text-align: center;
   margin-bottom: 15px;
-  font-size: 28px;
+  font-size: 30px;
   color: #fff;
   letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
+/* Sub Title glow */
 h2 {
   text-align: center;
   color: #ffeb3b;
   margin-top: 30px;
   font-size: 20px;
+  text-shadow: 0 0 8px #ffeb3b;
 }
 
 /* Form Section */
@@ -53,6 +79,7 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Input glow & smooth focus */
 input {
   flex: 1 1 30%;
   padding: 10px;
@@ -62,10 +89,12 @@ input {
   color: #333;
   font-size: 14px;
   outline: none;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
 }
 
-input::placeholder {
-  color: #555;
+input:focus {
+  box-shadow: 0 0 12px #6a11cb;
+  transform: scale(1.03);
 }
 
 /* Buttons */
@@ -77,34 +106,51 @@ button {
   cursor: pointer;
   font-size: 14px;
   transition: 0.3s;
+  letter-spacing: 0.5px;
 }
 
 #addBtn {
   background: #00e676;
   color: #111;
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
 }
 
 #addBtn:hover {
   background: #00c853;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(0, 230, 118, 1);
 }
 
 #updateBtn {
   background: #ffeb3b;
   color: #111;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
 }
 
 #updateBtn:hover {
   background: #fdd835;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(255, 235, 59, 1);
 }
 
-/* Table */
+/* Table fade-in */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
   color: white;
+  animation: fadeZoom 0.6s ease;
+}
+
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 th, td {
@@ -113,13 +159,40 @@ th, td {
   text-align: center;
 }
 
+/* header shine animation */
 th {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
 }
 
+th::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* Row hover effect */
 tr:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.01);
 }
 
 /* Action Buttons */
@@ -130,24 +203,29 @@ tr:hover {
   color: white;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .edit-btn {
   background: #ffb300;
+  box-shadow: 0 0 8px rgba(255, 179, 0, 0.7);
 }
 
 .edit-btn:hover {
   background: #ffa000;
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(255, 179, 0, 1);
 }
 
 .delete-btn {
   background: #e53935;
+  box-shadow: 0 0 8px rgba(229,57,53,0.7);
 }
 
 .delete-btn:hover {
   background: #c62828;
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(229,57,53,1);
 }
 
 /* Responsive */
@@ -155,11 +233,9 @@ tr:hover {
   .form {
     flex-direction: column;
   }
-
   input {
     flex: 1 1 100%;
   }
-
   button {
     width: 100%;
   }
